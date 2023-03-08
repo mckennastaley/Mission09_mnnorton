@@ -51,10 +51,17 @@ namespace Mission09_mnnorton
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    "typepage", "{bookType}/Page{pagenum}", new { Controller = "Home", action = "Index" }
+                    );
+
+                endpoints.MapControllerRoute(
                     name: "Paging",
                     pattern: "Page{pageNume}",
-                    defaults: new { Controller = "Home", action = "Index" }
+                    defaults: new { Controller = "Home", action = "Index", pageNum =1 }
                     );
+
+                endpoints.MapControllerRoute(
+                    "type", "{bookType}", new { Controller = "Home", action = "Index", pageNum = 1 });
 
                 endpoints.MapDefaultControllerRoute();
             });
