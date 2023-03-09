@@ -35,6 +35,9 @@ namespace Mission09_mnnorton
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository>();
 
             services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +50,8 @@ namespace Mission09_mnnorton
 
             //make program use files in wwwroot
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 
